@@ -48,5 +48,16 @@ test.describe('checkoutPage all tests',()=>{
         expect(itemsName).toEqual(['Sauce Labs Backpack','Sauce Labs Onesie'].sort())
         expect(itemsPrice).toEqual(['$29.99','$7.99'].sort())
     })
-
+    test('total price test @critical',async()=>{
+        const totalPrice = await ckout.getTotalPrice();
+        expect(totalPrice[0]).toContain('$41.02');
+    })
+    test('tax price test @critical',async()=>{
+        const taxPrice = await ckout.getTax();
+        expect(taxPrice[0]).toContain('$3.04');
+    })
+    test('item total price test @critical',async()=>{
+        const itemTotalPrice = await ckout.getSubTotal();
+        expect(itemTotalPrice[0]).toContain('$37.98');
+    })
 })

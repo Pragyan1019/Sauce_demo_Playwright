@@ -43,7 +43,7 @@ test.describe("Login test @critical", () => {
     await login.gotopage();
   });
 
-  test("valid Login_check", async ({ page }) => {
+  test("valid Login_check @smoke", async ({ page }) => {
     await login.logintopage("standard_user", "secret_sauce");
     await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html");
     await expect(page.locator('[data-test="title"]')).toBeVisible();

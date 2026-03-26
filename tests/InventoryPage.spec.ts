@@ -37,14 +37,14 @@ test.describe("Inventory test", () => {
     expect(count).toBe(6);
   });
   itemsName.forEach((items)=>{
-      test(`add to cart function check of item:${items} @sanity`,async()=>{
+      test(`add to cart function check of item:${items} @critical`,async()=>{
           await inventory.addToCart(items)
           await expect(inventory.shopping_cart_badge).toBeVisible();
           await expect(inventory.shopping_cart_badge).toHaveText('1');
       })
   })
   sortOptions.forEach((option) => {
-    test(`sorting using ${option.label}  @smoke`, async () => {
+    test(`sorting using ${option.label}  @regression`, async () => {
       await inventory.sortContainer(option.option);
       const sortedProductNames = await inventory.getProductNames();
       const sortedProductPrices = await inventory.getProductPrices();
